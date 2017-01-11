@@ -37,10 +37,12 @@ var ScoreUI = function(place, size, current) {
         this.current = scoreCounter.reset();
         document.getElementById(new_place).querySelector(".counter").innerHTML = scoreCounter.pad(this.current, size);
     };
+    
+    var forms = document.getElementsByTagName("form");
+    for(var i=0; i<forms.length;i++){
+      forms[i].addEventListener("submit", function(e){e.preventDefault();});
+    }
 
-    $('form').submit(function(e){
-        e.preventDefault();
-    });
 
     document.querySelector(".add_counter").onclick = function() {
         var number = document.getElementsByClassName("counter").length + 1;
